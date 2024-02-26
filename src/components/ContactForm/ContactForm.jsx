@@ -18,12 +18,6 @@ export default class ContactForm extends Component {
     return numberRegex.test(number);
   };
 
-  isNameDuplicate = newName => {
-    return this.props.contacts.some(
-      contact => contact.name.toLowerCase() === newName.toLowerCase()
-    );
-  };
-
   handleSubmit = e => {
     e.preventDefault();
     const { name, number } = this.state;
@@ -33,10 +27,6 @@ export default class ContactForm extends Component {
     }
     if (!this.validateNumber(number)) {
       alert('Please enter a valid phone number. Phone number must be digits and can contain spaces, dashes, parentheses and can start with +');
-      return;
-    }
-    if (this.isNameDuplicate(name)) {
-      alert('This name already exists in the phonebook.');
       return;
     }
 
